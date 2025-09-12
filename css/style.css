@@ -1,0 +1,272 @@
+/* GLOBAL */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9faff;
+  overflow-x: hidden;
+}
+
+header {
+  background: linear-gradient(90deg, #0d47a1, #1976d2);
+}
+
+header .nav-link {
+  transition: all 0.3s ease;
+}
+
+header .nav-link:hover {
+  color: #ffd54f !important;
+  text-shadow: 0 0 10px #fff176;
+}
+
+/* HERO */
+.hero-section {
+  background: linear-gradient(to right, #1565c0, #1e88e5);
+  position: relative;
+}
+.rounded-circle {
+  min-width: 10vw;
+  max-width: 40vw;
+  min-height: 10vh;
+  max-height: 40vh;
+}
+.hero-section h1 {
+  animation: fadeDown 1.2s ease-in-out;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FILTER SIDEBAR */
+.filter-sidebar {
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #43e97b, #f7ff00); /* radiant gradient */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  color: #fff; /* text color for contrast */
+  position: relative;
+  overflow: hidden;
+  animation: gradientMove 10s ease infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Optional: Smooth transition for hover */
+.filter-sidebar:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+}
+
+
+.filter-btn {
+  display: inline-block;
+  border: none;
+  background: #e3f2fd;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin: 4px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: #1976d2;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(25,118,210,0.5);
+}
+
+/* JOB CARD */
+.job-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.job-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.job-card .tags .tag {
+  background: #e0f7fa;
+  color: #00796b;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-right: 5px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.job-card .tags .tag:hover {
+  background: #004d40;
+  color: #fff;
+}
+
+.btn-apply {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-apply:hover {
+  background: #2e7d32;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(67,160,71,0.7);
+}
+
+/* FOOTER */
+footer {
+  background: #0d47a1;
+}
+
+/* SPARKLES */
+.background-sparkles::before,
+.background-sparkles::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: sparkleAnim 6s linear infinite;
+}
+
+@keyframes sparkleAnim {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
+}
+/* FLOWER PETALS */
+.flower-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.flower {
+  position: absolute;
+  width: 20px; height: 20px;
+  background: radial-gradient(circle at 30% 30%, #ff80ab, #f06292, #ec407a);
+  border-radius: 50% 50% 50% 50%;
+  opacity: 0.8;
+  animation: floatFlower 10s linear infinite;
+}
+
+.flower:nth-child(1) {
+  left: 10%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+
+.flower:nth-child(2) {
+  left: 30%;
+  animation-duration: 15s;
+  animation-delay: 2s;
+  background: radial-gradient(circle at 30% 30%, #ffe082, #fbc02d, #f57f17);
+}
+
+.flower:nth-child(3) {
+  left: 50%;
+  animation-duration: 18s;
+  animation-delay: 4s;
+  background: radial-gradient(circle at 30% 30%, #ba68c8, #9c27b0, #6a1b9a);
+}
+
+.flower:nth-child(4) {
+  left: 70%;
+  animation-duration: 20s;
+  animation-delay: 1s;
+  background: radial-gradient(circle at 30% 30%, #80deea, #00bcd4, #00838f);
+}
+
+.flower:nth-child(5) {
+  left: 85%;
+  animation-duration: 22s;
+  animation-delay: 3s;
+  background: radial-gradient(circle at 30% 30%, #aed581, #8bc34a, #558b2f);
+}
+
+@keyframes floatFlower {
+  0% {
+    transform: translateY(-50px) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(300px) rotate(180deg) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(600px) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Ensure hero text stays on top */
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Footer quick links hover */
+.footer a.hover-link:hover {
+  color: #ffd54f;
+  text-shadow: 0 0 8px #fff176;
+  transition: all 0.3s ease;
+}
+
+/* Social icons base */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Brand backgrounds */
+.social-icon.facebook { background-color: #1877f2; }   /* Facebook Blue */
+.social-icon.instagram { background-color: #e1306c; }  /* Instagram Pink/Red */
+.social-icon.linkedin { background-color: #0a66c2; }   /* LinkedIn Blue */
+.social-icon.github { background-color: #333; }        /* GitHub Dark Gray */
+
+/* Hover effect */
+.social-icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+/* Icon inside (white color) */
+.social-icon i { color: #fff; }
+
