@@ -38,7 +38,7 @@ header .nav-link:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* FILTER SIDEBAR */
+/* ====== FILTER SIDEBAR (Desktop) ====== */
 .filter-sidebar {
   background: linear-gradient(135deg, #6a11cb, #2575fc, #43e97b, #f7ff00); /* radiant gradient */
   background-size: 400% 400%;
@@ -102,12 +102,12 @@ header .nav-link:hover {
   opacity: 0.8;
 }
 
-.filter-sidebar h6:nth-of-type(1)::before { content: "\f0c0"; } /* Role icon */
+.filter-sidebar h6:nth-of-type(1)::before { content: "\f0c0"; } /* Role */
 .filter-sidebar h6:nth-of-type(2)::before { content: "\f121"; } /* Tech stack */
 .filter-sidebar h6:nth-of-type(3)::before { content: "\f3c5"; } /* Location */
 .filter-sidebar h6:nth-of-type(4)::before { content: "\f19d"; } /* Experience */
 
-/* FILTER BUTTONS */
+/* FILTER BUTTONS (Desktop + Mobile shared) */
 .filter-btn {
   display: inline-block;
   border: none;
@@ -140,17 +140,82 @@ header .nav-link:hover {
   box-shadow: 0 0 15px rgba(255,213,79,0.9), 0 0 25px rgba(255,213,79,0.6);
 }
 
-/* RESPONSIVE WRAP FOR SMALL SCREENS */
+/* ======= MOBILE ACCORDION FILTERS ======= */
+.accordion-item {
+  border: none;
+  background: transparent;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Accordion headers */
+.accordion-button {
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #43e97b, #f7ff00);
+  background-size: 400% 400%;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  animation: gradientShift 8s ease infinite;
+}
+
+.accordion-button::after {
+  filter: brightness(1.2) drop-shadow(0 0 6px rgba(255,255,255,0.6));
+}
+
+/* Expanded state */
+.accordion-button:not(.collapsed) {
+  color: #fff176; 
+  box-shadow: 0 0 18px rgba(255,255,255,0.4);
+  transform: scale(1.02);
+}
+
+/* Focus */
+.accordion-button:focus {
+  box-shadow: 0 0 12px rgba(255,255,255,0.7);
+  outline: none;
+}
+
+/* Accordion body */
+.accordion-body {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 12px 12px;
+  padding: 14px;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Gradient animation for headers */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade-in for body */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive for small devices */
 @media (max-width: 992px) {
   .filter-btn {
-    width: 48%; 
-    margin-bottom: 10px;
+    width: 48%; /* two per row */
+    text-align: center;
   }
   .filter-sidebar {
     padding: 15px;
     border-radius: 12px;
   }
 }
+
 
 
 /* JOB CARD */
