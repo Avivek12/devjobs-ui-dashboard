@@ -41,54 +41,117 @@ header .nav-link:hover {
 /* FILTER SIDEBAR */
 .filter-sidebar {
   background: linear-gradient(135deg, #6a11cb, #2575fc, #43e97b, #f7ff00); /* radiant gradient */
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  color: #fff; /* text color for contrast */
+  background-size: 400% 400%;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  color: #fff;
   position: relative;
   overflow: hidden;
-  animation: gradientMove 10s ease infinite;
+  animation: gradientMove 15s ease infinite, sidebarHoverPulse 6s ease-in-out infinite;
+  z-index: 1;
 }
 
 /* Gradient Animation */
 @keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Optional: Smooth transition for hover */
-.filter-sidebar:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  transition: all 0.4s ease;
+/* Subtle pulse effect */
+@keyframes sidebarHoverPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); }
 }
 
+/* Sparkling effect */
+.filter-sidebar::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);
+  background-size: 50px 50px;
+  top: -50%;
+  left: -50%;
+  animation: sparkleMove 12s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
 
+@keyframes sparkleMove {
+  0% { transform: rotate(0deg) translate(0,0); }
+  100% { transform: rotate(360deg) translate(50px,50px); }
+}
+
+/* Section Titles with Icons */
+.filter-sidebar h6 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-sidebar h6::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.filter-sidebar h6:nth-of-type(1)::before { content: "\f0c0"; } /* Role icon */
+.filter-sidebar h6:nth-of-type(2)::before { content: "\f121"; } /* Tech stack */
+.filter-sidebar h6:nth-of-type(3)::before { content: "\f3c5"; } /* Location */
+.filter-sidebar h6:nth-of-type(4)::before { content: "\f19d"; } /* Experience */
+
+/* FILTER BUTTONS */
 .filter-btn {
   display: inline-block;
   border: none;
-  background: #e3f2fd;
-  padding: 6px 12px;
-  border-radius: 20px;
-  margin: 4px 0;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 30px;
+  margin: 4px 4px 10px 0;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: inset 2px 2px 6px rgba(255,255,255,0.2),
+              inset -2px -2px 6px rgba(0,0,0,0.2),
+              0 4px 8px rgba(0,0,0,0.25);
 }
 
 .filter-btn:hover {
-  background: #1976d2;
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(25,118,210,0.5);
+  background: #fff;
+  color: #2575fc;
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 25px rgba(0,0,0,0.3);
 }
+
+.filter-btn.active {
+  background: #ffd54f;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(255,213,79,0.9), 0 0 25px rgba(255,213,79,0.6);
+}
+
+/* RESPONSIVE WRAP FOR SMALL SCREENS */
+@media (max-width: 992px) {
+  .filter-btn {
+    width: 48%; 
+    margin-bottom: 10px;
+  }
+  .filter-sidebar {
+    padding: 15px;
+    border-radius: 12px;
+  }
+}
+
 
 /* JOB CARD */
 .job-card {
@@ -256,10 +319,10 @@ footer {
 }
 
 /* Brand backgrounds */
-.social-icon.facebook { background-color: #1877f2; }   /* Facebook Blue */
-.social-icon.instagram { background-color: #e1306c; }  /* Instagram Pink/Red */
-.social-icon.linkedin { background-color: #0a66c2; }   /* LinkedIn Blue */
-.social-icon.github { background-color: #333; }        /* GitHub Dark Gray */
+.social-icon.facebook { background-color: #1877f2; }  
+.social-icon.instagram { background-color: #e1306c; }  
+.social-icon.linkedin { background-color: #0a66c2; }   
+.social-icon.github { background-color: #333; }        
 
 /* Hover effect */
 .social-icon:hover {
@@ -267,6 +330,5 @@ footer {
   box-shadow: 0 0 10px rgba(255,255,255,0.7);
 }
 
-/* Icon inside (white color) */
 .social-icon i { color: #fff; }
 
